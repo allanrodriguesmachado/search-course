@@ -13,7 +13,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>UpAdmin - Site Control</title>
+    <title>ImobTech</title>
 </head>
 <body>
 

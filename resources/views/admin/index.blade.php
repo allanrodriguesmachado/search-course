@@ -12,7 +12,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Imobe.Dev</title>
+    <title>ImobTech</title>
 </head>
 <body>
 
