@@ -34,20 +34,19 @@
 
                 <label>
                     <span class="field icon-unlock-alt">Senha:</span>
-                    <input type="password" id="password_check" name="password_check" placeholder="Informe sua senha" />
+                    <input type="password" id="password_check" name="password_check" placeholder="Informe sua senha"/>
+
+                    <span class="dash_login_span_right mt-">Esqueceu sua senha?
+                      <a target="_blank" href="#" class="transition text-green">Alterar</a>
+                    </span>
                 </label>
 
                 <button class="gradient gradient-orange radius icon-sign-in">Entrar</button>
             </form>
 
             <footer>
-                <p>Desenvolvido por <a href="#">www.<b>allan.r</b>.com.br</a></p>
-                <p>&copy; <?= date("Y"); ?> - Todos os Direitos Reservados</p>
-                <p class="dash_login_left_box_support">
-                    <a target="_blank"
-                       class="icon-whatsapp transition text-green"
-                       href="https://api.whatsapp.com/send?phone=DDI+DDD+TELEFONE&text=Olá, preciso de ajuda com o login."
-                    >Precisa de Suporte?</a>
+                <p class="dash_login_left_box_support"> Não tem uma conta?
+                    <a target="_blank" href="#" class="transition text-green">Registre-se</a>
                 </p>
             </footer>
         </article>

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use http\Env\Response;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\{JsonResponse, RedirectResponse, Request};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -13,6 +12,9 @@ class AuthController extends Controller
 {
     public function showLoginForm(): View
     {
+//        $user = User::where('id', 1)->first();
+//        $user->password = bcrypt('teste');
+//        $user->save();
         return view('admin.index');
     }
 
@@ -21,24 +23,29 @@ class AuthController extends Controller
         return view('admin.dashboard');
     }
 
-    public function login(Request $request)
+    public function login(Request $request): JsonResponse
     {
-
         if (in_array('', $request->only('email', 'password'))) {
-             $json['message'] = "Opss, informe todos os dados para efeturar o login";
+             $json['message'] = $this->message->error("Opss, Informe todos os dados para efeturar o login")->render();
              return response()->json($json);
         }
 
-        if (!filter_var($request->only('email'), FILTER_SANITIZE_EMAIL)) {
-            $json['message'] = "Opss, informe um e-mail valido para continuar";
+        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $json['message'] = $this->message->warning("Opss, Informe um e-mail valido")->render();
             return response()->json($json);
         }
 
         $credentials = $request->validate([
-           'email' => 'required|email',
-           'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
-        return $request->all();
+        if (!Auth::attempt($credentials)) {
+            $json['message'] = $this->message->error("Opsss, Dados invalidos")->render();
+            return response()->json($json);
+        }
+
+        $json['redirect'] = route('admin.home');
+        return response()->json($json);
     }
 }
