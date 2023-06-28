@@ -131,6 +131,12 @@ html, body {
   }
 }
 
+.dash_login_span_right  {
+    font-size: 0.8em;
+    font-weight: 300;
+    margin-top: 0.5rem
+}
+
 /** RIGHT */
 .dash_login_right {
   flex-basis: $dash-login-right-width;

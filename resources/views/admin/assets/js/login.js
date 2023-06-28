@@ -14,13 +14,33 @@ $(function () {
         const password = $('#password_check').val();
 
         $.post(action, {
-            email: email,
-            password: password
-        }, function (request) {
-            console.log(request)
-            if (request.message) {
-                alert("Mensagem de erro:" + request.message)
+            email: email, password: password
+        }, function (response) {
+            if (response.message) {
+                ajaxMessage(response.message, 3)
             }
+
         }, 'json');
-    })
+    });
+
+    let ajaxResponseBaseTime = 3;
+
+    function ajaxMessage(message, time) {
+        let ajaxMessage = $(message);
+
+        ajaxMessage.append("<div class='message_time'></div>");
+        ajaxMessage.find(".message_time").animate({"width": "100%"}, time * 1000, function () {
+            $(this).parents(".message").fadeOut(200);
+        });
+
+        $(".ajax_response").append(ajaxMessage);
+    }
+
+    $(".ajax_response .message").each(function (e, m) {
+        ajaxMessage(m, ajaxResponseBaseTime += 1);
+    });
+
+    $(".ajax_response").on("click", ".message", function (e) {
+        $(this).effect("bounce").fadeOut(1);
+    });
 })
