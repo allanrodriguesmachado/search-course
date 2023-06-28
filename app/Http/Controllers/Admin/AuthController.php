@@ -10,11 +10,15 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showLoginForm(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+    public function showLoginForm(): RedirectResponse|View
     {
-//        $user = User::where('id', 1)->first();
-//        $user->password = bcrypt('teste');
-//        $user->save();
+        $user = User::where('id', 1)->first();
+        $user->password = bcrypt('teste');
+        $user->save();
+        if (Auth::check() === true) {
+            return redirect()->route('admin.home');
+        }
+
         return view('admin.index');
     }
 
@@ -45,6 +49,8 @@ class AuthController extends Controller
             return response()->json($json);
         }
 
+        $this->authenticate($request->getClientIp());
+
         $json['redirect'] = route('admin.home');
         return response()->json($json);
     }
@@ -53,5 +59,14 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('admin.login');
+    }
+
+    private function authenticate(string $ip): void
+    {
+        $user = User::where('id', Auth::user()->id);
+        $user->update([
+            'last_login_at' => date('Y-m-d H:i:s'),
+            'last_login_ip' => $ip
+        ]);
     }
 }

@@ -140,3 +140,7 @@
         </section>
     </div>
 @endsection
+
+@section('js')
+    {{--    <script>alert("TESTE")</script>--}}
+@endsection
