@@ -61,7 +61,7 @@
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
-            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{route('admin.logout')}}">Sair</a></li>
         </ul>
 
     </aside>
@@ -76,7 +76,7 @@
                         <i class="icon-imob text-orange"></i><a href="">Up<b>Admin</b></a>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
-                        <a class="text-red icon-sign-out" href="">Sair</a>
+                        <a class="text-red icon-sign-out" href="{{route('admin.logout')}}">Sair</a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,6 @@
 $(function () {
+    let ajaxResponseBaseTime = 3;
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -25,8 +27,6 @@ $(function () {
             }
         }, 'json');
     });
-
-    let ajaxResponseBaseTime = 3;
 
     function ajaxMessage(message, time) {
         let ajaxMessage = $(message);
