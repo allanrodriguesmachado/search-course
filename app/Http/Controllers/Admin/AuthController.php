@@ -10,7 +10,7 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showLoginForm(): View
+    public function showLoginForm(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
     {
 //        $user = User::where('id', 1)->first();
 //        $user->password = bcrypt('teste');
@@ -49,7 +49,7 @@ class AuthController extends Controller
         return response()->json($json);
     }
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
         return redirect()->route('admin.login');

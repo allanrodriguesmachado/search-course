@@ -12,7 +12,7 @@ Route::name('admin.')->group(function () {
         ->name('login.do');
 
     Route::get('home', [AuthController::class, 'home'])
-        ->name('home')->middleware(Authenticate::class);
+        ->middleware(['auth', 'verified'])->name('home');
 
     Route::get('logout', [AuthController::class, 'logout'])
         ->name('logout');
