@@ -3,11 +3,18 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build --watch"
     },
     "devDependencies": {
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.5",
-        "vite": "^4.0.0"
+        "rollup-plugin-alias": "^2.2.0",
+        "sass": "^1.64.0",
+        "vite": "^4.0.0",
+        "vite-plugin-static-copy": "^0.17.0"
+    },
+    "dependencies": {
+        "@rollup/plugin-alias": "^5.0.0",
+        "@vitejs/plugin-legacy": "^4.1.1"
     }
 }
