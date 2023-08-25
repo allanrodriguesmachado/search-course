@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -77,9 +78,24 @@ void chuta() {
     cout << endl;
 }
 
+void le_arquivo() {
+    ifstream arquivo;
+    arquivo.open("palavras.txt");
+
+    int quantidade_palavra;
+    arquivo >> quantidade_palavra;
+
+    for (int i = 0; i < quantidade_palavra; i++) {
+        string palavra_lida;
+        arquivo >> palavra_lida;
+        cout << i << endl;
+    }
+}
+
+
 int main() {
     cabecalho();
-
+    le_arquivo();
     while (nao_acertou() && nao_enforcou()) {
         imprime_chutes_errados();
         imprime_palavra();
