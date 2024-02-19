@@ -26,20 +26,4 @@ class Course
         $this->crawler->addHtmlContent($response->getBody());
         return $this->crawler->filter('span.card-curso__nome');
     }
-
-//    public function searchA(string $url): array
-//    {
-//        $courses = [];
-//        $response = $this->httpClient->request('GET', $url);
-//        $html = $response->getBody();
-//
-//        $this->crawler->addHtmlContent($html);
-//        $elements =  $this->crawler->filter('span.card-curso__nome');
-//
-//        foreach ($elements AS $element) {
-//            $courses[] = $element;
-//        }
-//
-//        return $courses ?? [];
-//    }
 }
