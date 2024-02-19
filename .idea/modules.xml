@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Hangman-game.iml" filepath="$PROJECT_DIR$/.idea/Hangman-game.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/php-docker.iml" filepath="$PROJECT_DIR$/.idea/php-docker.iml" />
     </modules>
   </component>
 </project>
